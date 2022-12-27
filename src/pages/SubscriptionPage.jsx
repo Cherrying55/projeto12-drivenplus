@@ -73,9 +73,6 @@ export default function SubscriptionPage(){
         }
     }
 
-    function goback(){
-        navigate("/subscriptions");
-    }
 
     return(
         <>
@@ -83,7 +80,7 @@ export default function SubscriptionPage(){
             modal ? <><Modal name={plano.name} price={plano.price} dados ={dados} setModal={setModal} /><BlurredScreen /></>
             :
             <>
-            <BackHeader onClick={goback} />
+            <BackHeader />
             <SubLogo image={plano.image} name={plano.name} />
             <SubPlano perks={plano.perks} price={plano.price} />
             <SignForm onSubmit={fazercadastro}>

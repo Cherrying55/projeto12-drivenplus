@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import back from "../assets/back.svg";
+import { Link } from "react-router-dom";
 
 export default function BackHeader(props){
+
     return(
         <Container>
+            <Link to="/subscriptions">
             <img src={back} />
+            </Link>
         </Container>
     )
 }
