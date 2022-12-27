@@ -1,6 +1,6 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import AuthContext from "../contexts/AuthContext.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import SignForm from "../assets/SignForm.jsx";
 
@@ -11,15 +11,18 @@ export default function SignUpPage(){
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
 
-    if(auth && auth.token){
-        navigate("/home");
-    }
+
+    useEffect(() => {
+        console.log(dados)
+    }, [dados])
 
     function alterardados(e){
         let newobj = {...dados};
         newobj[e.target.name] = e.target.value;
         setDados({...newobj});
     }
+
+    console.log(dados);
 
     function fazercadastro(e){
         e.preventDefault();
@@ -34,10 +37,10 @@ export default function SignUpPage(){
     return(
         <>
         <SignForm onSubmit={fazercadastro}>
-            <input type="text" name="name" placeholder="Nome" />
-            <input type="text" name="cpf" placeholder="CPF" />
-            <input type="email" name="email" placeholer="E-mail" />
-            <input type="password" name="password" placeholder="Senha" />
+            <input type="text" name="name" placeholder="Nome" onChange={alterardados} />
+            <input type="text" name="cpf" placeholder="CPF" onChange={alterardados}/>
+            <input type="text" name="email" placeholer="E-mail" onChange={alterardados}/>
+            <input type="password" name="password" placeholder="Senha" onChange={alterardados} />
             <button type="submit">CADASTRAR</button>
         </SignForm>
         <Link to="/">

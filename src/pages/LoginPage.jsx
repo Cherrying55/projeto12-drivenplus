@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext.js";
 import { useState, useContext } from "react";
 import SignForm from "../assets/SignForm.jsx";
@@ -11,10 +11,7 @@ export default function LoginPage(){
     const [loading, setLoading] = useState(false);
     const [dados, setDados] = useState({email: "", password: ""})
 
-    if(auth && auth.token){
-        navigate("/home");
-    }
-
+    
     function alterardados(e){
         let newobj = {...dados};
         newobj[e.target.name] = e.target.value;
@@ -27,7 +24,12 @@ export default function LoginPage(){
         .then(
             (res) => {
                 login(res.data);
-                navigate("/home");
+                if(res.data.membership){
+                    navigate("/home")
+                }
+                else{
+                    navigate("/subscriptions")
+                }
             }
         )
         .catch(
@@ -37,10 +39,9 @@ export default function LoginPage(){
 
     return(
         <>
-        <Logo />
         <SignForm onSubmit={fazerlogin}>
-            <input type="email" name="email" placeholder="E-mail" />
-            <input type="password" name="password" placeholder="Senha" />
+            <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
+            <input type="password" name="password" placeholder="Senha" onChange={alterardados}/>
             <button type="submit">ENTRAR</button>
         </SignForm>
         <Link to="/sign-up">
@@ -51,3 +52,5 @@ export default function LoginPage(){
     )
 
 }
+
+// <Logo />

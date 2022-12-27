@@ -1,9 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./assets/GlobalStyle.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import SignUpPage from './pages/SignUpPage.jsx';
+import SubscriptionsPage from './pages/SubscriptionsPage.jsx';
+import SubscriptionPage from './pages/SubscriptionPage.jsx';
+import HomePage from './pages/HomePage.jsx';
+import { AuthProvider } from "./contexts/AuthContext";
 
 export default function App(){
     return(
         <>
+        <AuthProvider>
         <GlobalStyle />
         <BrowserRouter>
         <Routes>
@@ -14,6 +21,7 @@ export default function App(){
             <Route path="/home" element={<HomePage />} />
         </Routes>
         </BrowserRouter>
+        </AuthProvider>
         </>
     )
 }

@@ -36,6 +36,17 @@ button{
     line-height: 16px;
     color: #FFFFFF;
 }
+
+
+div input{
+    width: 48.5%;
+}
+
+div{
+    display: flex;
+    gap: 3%;
+}
+
 `
 
 export default SignForm;

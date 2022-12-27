@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../contexts/AuthContext.js";
 import SubscriptionCard from "../components/SubscriptionCard.jsx";
+import styled from "styled-components";
 
 export default function SubscriptionsPage(){
 
@@ -40,3 +41,9 @@ export default function SubscriptionsPage(){
         </>
     )
 }
+
+const SubscriptionsContainer = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
+`

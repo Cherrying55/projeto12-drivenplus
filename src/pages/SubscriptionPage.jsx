@@ -2,14 +2,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import AuthContext from "../contexts/AuthContext.jsx";
+import AuthContext from "../contexts/AuthContext.js";
+import SignForm from "../assets/SignForm.jsx";
+import Modal from '../components/Modal.jsx';
+import BackHeader from '../components/BackHeader.jsx';
+import SubLogo from '../components/SubLogo.jsx';
+import SubPlano from '../components/SubPlano.jsx';
 
 
 export default function SubscriptionPage(){
     
     //aqui
     const { iddoPlano } = useParams();
-    const { auth, login } = useContext(AuthContext);
+    const { auth, login, definirplano } = useContext(AuthContext);
     const [plano, setPlano] = useState(undefined);
     const [dados, setDados] = useState({cardName: "", cardNumber: "", securityNumber: "", expirationDate: ""})
     const [modal, setModal] = useState(false);
@@ -28,7 +33,14 @@ export default function SubscriptionPage(){
                 }
             )
         }
-    )
+    , [])
+
+
+    if(!plano){
+        return(
+            <h1>Carregando...</h1>
+        )
+    }
 
     function alterardados(e){
         let newobj = {...dados};
@@ -42,7 +54,8 @@ export default function SubscriptionPage(){
         newobj.membershipId = plano.id;
         setDados({...newobj});
         setModal(true);
-    }
+    };
+
 
     function confirmorcancel(e){
         if(e.target.textContent === "SIM"){
@@ -52,7 +65,7 @@ export default function SubscriptionPage(){
                 }
             })
             .then(
-                (res) => {login(res.data); navigate("/home") }
+                (res) => {definirplano(res.data); navigate("/home") }
             )
         }
         else{
@@ -67,13 +80,13 @@ export default function SubscriptionPage(){
     return(
         <>
         {
-            modal ? <><Modal name={plano.name} price={plano.price} /><BlurredScreen /></>
+            modal ? <><Modal name={plano.name} price={plano.price} dados ={dados} setModal={setModal} /><BlurredScreen /></>
             :
             <>
             <BackHeader onClick={goback} />
-            <SubLogo image={plano.image} />
-            <Subplano perks={plano.perks} price={plano.price} />
-            <SubForm onSubmit={fazercadastro}>
+            <SubLogo image={plano.image} name={plano.name} />
+            <SubPlano perks={plano.perks} price={plano.price} />
+            <SignForm onSubmit={fazercadastro}>
                 <input type="text" name="cardName" placeholder="Nome impresso no cartão" onChange={alterardados} />
                 <input type="text" name="cardNumber" placeholder="Digitos do cartão"  onChange={alterardados} />
                 <div>
@@ -81,7 +94,7 @@ export default function SubscriptionPage(){
                 <input type="text" name="expirationDate" placeholder="Validade"  onChange={alterardados}/>
                 </div>
                 <button type="submit">ASSINAR</button>
-            </SubForm>
+            </SignForm>
             </>
 
         }
@@ -89,3 +102,13 @@ export default function SubscriptionPage(){
     )
 
 }
+
+const BlurredScreen = styled.div`
+width: 100%;
+height: 100%;
+position: absolute;
+z-index: 3;
+background: rgba(0, 0, 0, 0.7);
+top: 0;
+left: 0;
+`
