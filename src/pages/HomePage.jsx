@@ -9,7 +9,10 @@ export default function HomePage(){
 
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log(auth);
+
+    function gouser(){
+        navigate(`/users/${auth.id}`)
+    }
 
     function goback(){
         navigate("/subscriptions")
@@ -32,7 +35,7 @@ export default function HomePage(){
         <>
         <HomeHeader>
             <img src={auth.membership.image} />
-            <ion-icon name="person-circle-outline"></ion-icon>
+            <ion-icon name="person-circle-outline" onClick={gouser}></ion-icon>
         </HomeHeader>
         <HomeH1>Olá, {auth.name}</HomeH1>
         <HomeContainer>

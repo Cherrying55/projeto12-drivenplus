@@ -80,7 +80,7 @@ export default function SubscriptionPage(){
             modal ? <><Modal name={plano.name} price={plano.price} dados ={dados} setModal={setModal} /><BlurredScreen /></>
             :
             <>
-            <BackHeader />
+            <BackHeader link={"/subscriptions"}/>
             <SubLogo image={plano.image} name={plano.name} />
             <SubPlano perks={plano.perks} price={plano.price} />
             <SignForm onSubmit={fazercadastro}>

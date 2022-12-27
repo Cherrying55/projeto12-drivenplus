@@ -5,6 +5,7 @@ import SignUpPage from './pages/SignUpPage.jsx';
 import SubscriptionsPage from './pages/SubscriptionsPage.jsx';
 import SubscriptionPage from './pages/SubscriptionPage.jsx';
 import HomePage from './pages/HomePage.jsx';
+import UserPage from "./pages/UserPage.jsx";
 import { AuthProvider } from "./contexts/AuthContext";
 
 export default function App(){
@@ -19,6 +20,7 @@ export default function App(){
             <Route path="/subscriptions" element={<SubscriptionsPage />} />
             <Route path="/subscriptions/:iddoPlano" element={<SubscriptionPage />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/users/:iddoUsuario" element={<UserPage />} />
         </Routes>
         </BrowserRouter>
         </AuthProvider>

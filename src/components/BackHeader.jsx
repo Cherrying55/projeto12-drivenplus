@@ -6,7 +6,7 @@ export default function BackHeader(props){
 
     return(
         <Container>
-            <Link to="/subscriptions">
+            <Link to={props.link}>
             <img src={back} />
             </Link>
         </Container>
