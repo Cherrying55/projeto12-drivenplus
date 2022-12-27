@@ -58,8 +58,23 @@ const GlobalStyle = createGlobalStyle`
     }
 
     a{
-        text-decoration: none;
         color: white;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        text-decoration: none;
+    }
+
+    a[href="/sign-up"], a[href="/"] {
+        margin-top: 24px;
+        text-decoration: underline;
+    }
+
+    *{
+        box-sizing: border-box;
+        font-family: 'Roboto';
     }
 
 

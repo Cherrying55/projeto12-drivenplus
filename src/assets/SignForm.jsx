@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SignForm = styled.form`
-width: 90%;
+width: 80%;
 display: flex;
 flex-direction: column;
 gap: 16px;
@@ -35,6 +35,7 @@ button{
     font-size: 14px;
     line-height: 16px;
     color: #FFFFFF;
+    width: 100%;
 }
 
 

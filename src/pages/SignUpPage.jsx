@@ -1,15 +1,13 @@
-import { useState, useContext, useEffect } from 'react';
-import AuthContext from "../contexts/AuthContext.js";
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import SignForm from "../assets/SignForm.jsx";
-
+import styled from 'styled-components';
 
 export default function SignUpPage(){
 
     const [dados, setDados] = useState({email: "", name: "", cpf: "", password: ""});
     const navigate = useNavigate();
-    const { auth } = useContext(AuthContext);
 
 
     useEffect(() => {
@@ -36,6 +34,7 @@ export default function SignUpPage(){
 
     return(
         <>
+        <Empty />
         <SignForm onSubmit={fazercadastro}>
             <input type="text" name="name" placeholder="Nome" onChange={alterardados} />
             <input type="text" name="cpf" placeholder="CPF" onChange={alterardados}/>
@@ -49,3 +48,9 @@ export default function SignUpPage(){
         </>
     )
 }
+
+const Empty = styled.div`
+width: 100%;
+height: 0;
+margin-bottom: 147px;
+`

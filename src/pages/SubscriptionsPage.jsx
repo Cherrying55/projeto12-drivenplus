@@ -24,7 +24,7 @@ export default function SubscriptionsPage(){
 
     return(
         <>
-        <h1>Escolha seu Plano</h1>
+        <SubsH1>Escolha seu Plano</SubsH1>
         <SubscriptionsContainer>
         {
             planos.map((p) => {
@@ -46,4 +46,17 @@ const SubscriptionsContainer = styled.div`
 display: flex;
 flex-direction: column;
 gap: 10px;
+width: 80%;
+`
+
+const SubsH1 = styled.h1`
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 38px;
+color: #FFFFFF;
+margin-top: 29px;
+margin-bottom: 24px;
 `

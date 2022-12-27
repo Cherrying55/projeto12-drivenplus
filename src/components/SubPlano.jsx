@@ -38,10 +38,12 @@ const SubtitleContainer = styled.div`
 display: flex;
 flex-direction: column;
 margin-bottom: 12px;
+width: 80%;
 
 div{
     display: flex;
     gap: 4px;
+    margin-bottom: 10px;
 }
 
 font-family: 'Roboto';

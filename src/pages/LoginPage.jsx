@@ -3,10 +3,12 @@ import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../contexts/AuthContext.js";
 import { useState, useContext } from "react";
 import SignForm from "../assets/SignForm.jsx";
+import DrivenLogo from "../assets/DrivenLogo.jsx";
+import styled from "styled-components";
 
 export default function LoginPage(){
 
-    const { auth, login } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [dados, setDados] = useState({email: "", password: ""})
@@ -39,6 +41,9 @@ export default function LoginPage(){
 
     return(
         <>
+        <Logo>
+            <DrivenLogo />
+        </Logo>
         <SignForm onSubmit={fazerlogin}>
             <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
             <input type="password" name="password" placeholder="Senha" onChange={alterardados}/>
@@ -53,4 +58,8 @@ export default function LoginPage(){
 
 }
 
-// <Logo />
+const Logo = styled.div`
+width: 80%;
+margin-top: 134px;
+margin-bottom: 100px;
+`
