@@ -43,8 +43,10 @@ export default function HomePage(){
                     )
                 }
             )}
-            <button onClick={goback}>Mudar Plano</button>
-            <button onClick={cancelarplano}>Cancelar Plano</button>
+            <div>
+            <Button cor={"rosa"} onClick={goback}>Mudar Plano</Button>
+            <Button cor={"vermelho"} onClick={cancelarplano}>Cancelar Plano</Button>
+            </div>
         </HomeContainer>
         
         </>
@@ -52,13 +54,13 @@ export default function HomePage(){
 }
 
 const HomeContainer = styled.div`
+width: 100%;
+align-items: center;
 display: flex;
 flex-direction: column;
 gap: 8px;
-width: 100%;
-align-items: center;
 
-a, button{
+a {
     background: #FF4791;
     border-radius: 8px;
     height: 52px;
@@ -75,7 +77,16 @@ font-size: 14px;
 line-height: 16px;
 color: #FFFFFF;
 }
-
+div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 10px;
+}
 `
 
 const HomeH1 = styled.h1`
@@ -86,17 +97,18 @@ font-weight: 700;
 font-size: 24px;
 line-height: 28px;
 color: #FFFFFF;
+margin-top: 84px;
 `
 
 const HomeHeader = styled.header`
 display: flex;
-height: 50px;
+height: 72px;
 justify-content: space-between;
 padding-left: 38px;
-padding-right: 22px;
-padding-top: 22px;
 width: 100%;
 box-sizing: border-box;
+position: fixed;
+top: 0;
 
 img{
     align-self: flex-end;
@@ -108,5 +120,39 @@ ion-icon{
     font-size: 48px;
     color: white;
     align-self: flex-start;
+    margin-top: 12px;
+    margin-right: 12px;
 }
+`
+
+const Button = styled.button`
+background: ${props => props.cor === "rosa" ? "#FF4791" : "#FF4747"};
+border-radius: 8px;
+height: 52px;
+left: 38px;
+top: 176px;
+width: 90%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+color: #FFFFFF;};
+    border-radius: 8px;
+    height: 52px;
+    left: 38px;
+    top: 176px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 16px;
+color: #FFFFFF;
 `

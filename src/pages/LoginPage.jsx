@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import SignForm from "../assets/SignForm.jsx";
 import DrivenLogo from "../assets/DrivenLogo.jsx";
 import styled from "styled-components";
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function LoginPage(){
 
@@ -21,6 +22,7 @@ export default function LoginPage(){
     }
 
     function fazerlogin(e){
+        setLoading(true);
         e.preventDefault();
         axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/login", dados)
         .then(
@@ -47,7 +49,13 @@ export default function LoginPage(){
         <SignForm onSubmit={fazerlogin}>
             <input type="email" name="email" placeholder="E-mail" onChange={alterardados} />
             <input type="password" name="password" placeholder="Senha" onChange={alterardados}/>
-            <button type="submit">ENTRAR</button>
+            <button type="submit" disabled={loading}>
+            {
+            loading
+              ? <ThreeDots color="#FFFFFF" height={50} width={50} />
+              : "ENTRAR"
+               }
+            </button>
         </SignForm>
         <Link to="/sign-up">
             Não possui uma conta? Cadastre-se

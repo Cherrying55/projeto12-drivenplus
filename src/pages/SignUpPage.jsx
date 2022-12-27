@@ -3,11 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import SignForm from "../assets/SignForm.jsx";
 import styled from 'styled-components';
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function SignUpPage(){
 
     const [dados, setDados] = useState({email: "", name: "", cpf: "", password: ""});
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
@@ -23,6 +25,7 @@ export default function SignUpPage(){
     console.log(dados);
 
     function fazercadastro(e){
+        setLoading(true);
         e.preventDefault();
         axios.post("https://mock-api.driven.com.br/api/v4/driven-plus/auth/sign-up", dados)
         .then(
@@ -40,7 +43,13 @@ export default function SignUpPage(){
             <input type="text" name="cpf" placeholder="CPF" onChange={alterardados}/>
             <input type="text" name="email" placeholer="E-mail" onChange={alterardados}/>
             <input type="password" name="password" placeholder="Senha" onChange={alterardados} />
-            <button type="submit">CADASTRAR</button>
+            <button type="submit" disabled={loading}>
+            {
+            loading
+              ? <ThreeDots color="#FFFFFF" height={50} width={50} />
+              : "CADASTRAR"
+               }
+            </button>
         </SignForm>
         <Link to="/">
             Já possui uma conta? Entre
