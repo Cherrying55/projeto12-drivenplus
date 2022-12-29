@@ -37,7 +37,7 @@ export default function LoginPage(){
             }
         )
         .catch(
-            (err) => {alert("Ocorreu um erro, tente novamente")}
+            (err) => {alert("Ocorreu um erro, tente novamente");setLoading(false)}
         )
     }
 

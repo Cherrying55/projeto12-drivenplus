@@ -26,7 +26,7 @@ padding-left: 16px;
 padding-right: 16px;
 
 img{
-    width: 47.5%;
+    height: 100px;
 }
 
 h1{

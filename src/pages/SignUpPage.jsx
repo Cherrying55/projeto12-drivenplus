@@ -33,6 +33,7 @@ export default function SignUpPage(){
                 navigate("/");
             }
         )
+        .catch(() => {setLoading(false)})
     }
 
     return(

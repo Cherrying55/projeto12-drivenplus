@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
 
   function definirplano(authData){
     let newobj = {...auth};
-    newobj.membership = authData;
+    newobj.membership = authData.membership;
     setAuth(newobj);
     localStorage.setItem("auth", JSON.stringify(newobj));
 
